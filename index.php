@@ -105,6 +105,7 @@
 							<h1 class="text-center font-weight-bold text-primary">Create Account</h1>
 							<hr class="my-3" />
 							<form action="#" method="post" class="px-3" id="register-form">
+								<div id="regAlert"></div>
 								<div class="input-group input-group-lg form-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text rounded-0">
@@ -156,6 +157,9 @@
 										required
 										minlength="5"
 									/>
+								</div>
+								<div class="form-group">
+									<div id="passError" class="text-danger font-weight-bold"></div>
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Sign Up" id="register-btn" class="btn btn-primary btn-lg btn-block myBtn" />
@@ -242,6 +246,33 @@
 				$('#back-link').click(function () {
 					$('#login-box').show();
 					$('#forgot-box').hide();
+				});
+
+				// Register Ajax Request
+				$('#register-btn').click(function (e) {
+					if ($('#register-form')[0].checkValidity()) {
+						e.preventDefault();
+						$('#register-btn').val('Please Wait...');
+						if ($('#rpassword').val() != $('#cpassword').val()) {
+							$('#passError').text('* Password did not matched!');
+							$('#register-btn').val('Sign Up');
+						} else {
+							$('#passError').text('');
+							$.ajax({
+								url: 'assets/php/action.php',
+								method: 'post',
+								data: $('#register-form').serialize() + '&action=register',
+								success: function (response) {
+									$('#register-btn').val('Sign Up');
+									if (response === 'register') {
+										window.location = 'home.php';
+									} else {
+										$('#regAlert').html(response);
+									}
+								},
+							});
+						}
+					}
 				});
 			});
 		</script>
