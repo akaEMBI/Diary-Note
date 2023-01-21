@@ -33,6 +33,7 @@
 							<h1 class="text-center font-weight-bold text-primary">Sign in to Account</h1>
 							<hr class="my-3" />
 							<form action="#" method="post" class="px-3" id="login-form">
+								<div id="loginAlert"></div>
 								<!-- email-form-start -->
 								<div class="input-group input-group-lg form-group">
 									<div class="input-group-prepend">
@@ -272,6 +273,29 @@
 								},
 							});
 						}
+					}
+				});
+
+				//Login Ajax Request
+				$('#login-btn').click(function (e) {
+					if ($('#login-form')[0].checkValidity()) {
+						e.preventDefault();
+
+						$('#login-btn').val('Please Wait...');
+						$.ajax({
+							url: 'assets/php/action.php',
+							method: 'post',
+							data: $('#login-form').serialize() + '&action=login',
+							success: function (response) {
+								console.log(response);
+								$('#login-btn').val('Sign In');
+								if (response === 'login') {
+									window.location = 'home.php';
+								} else {
+									$('#loginAlert').html(response);
+								}
+							},
+						});
 					}
 				});
 			});
