@@ -21,11 +21,11 @@ body {
 	box-shadow: 0 5px 10px #111;
 }
 .myBtn {
-	border-radius: 50px;
+	border-radius: 50px !important;
 	font-weight: bold;
 	font-size: 20px;
 	background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
-	border: none;
+	border: none !important;
 }
 .myBtn:hover {
 	background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
@@ -35,7 +35,7 @@ body {
 	border-radius: 100px;
 }
 .myLinkBtn {
-	border-radius: 100px;
+	border-radius: 100px !important;
 	width: 50%;
 	border: 2px solid #fff;
 }
