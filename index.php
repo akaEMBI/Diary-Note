@@ -6,6 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Diary Note</title>
+		<link rel="stylesheet" href="assets/css/style.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
@@ -27,7 +28,7 @@
 			<!-- Login Form Start -->
 			<div class="row justify-content-center wrapper" id="login-box">
 				<div class="col-lg-10 my-auto">
-					<div class="card-group">
+					<div class="card-group myShadow">
 						<div class="card rounded-left p-4" style="flex-grow: 1.4">
 							<h1 class="text-center font-weight-bold text-primary">Sign in to Account</h1>
 							<hr class="my-3" />
