@@ -42,6 +42,7 @@
 									<input type="email" name="email" id="email" class="form-control rounded-0" placeholder="E-Mail" required />
 								</div>
 								<!-- email-form-end -->
+								<!-- password-form-start -->
 								<div class="input-group input-group-lg form-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text rounded-0">
@@ -57,7 +58,29 @@
 										required
 									/>
 								</div>
+								<!-- password-form-end -->
+								<div class="form-group">
+									<div class="custom-control custom-checkbox float-left">
+										<input type="checkbox" name="rem" class="custom-control-input" id="customCheck" />
+										<label for="customCheck" class="custom-control-label">Remember me</label>
+									</div>
+									<div class="forgot float-right">
+										<a href="#" id="forgot-link">Forgot Password?</a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="form-group">
+									<input type="submit" value="Sign In" id="login-btn" class="btn btn-primary btn-lg btn-block myBtn" />
+								</div>
 							</form>
+						</div>
+						<div class="card justify-content-center rounded-right myColor p-4">
+							<h1 class="text-center font-weight-bold text-white">Hello Friends!</h1>
+							<hr class="my-3 bg-light myHr" />
+							<p class="text-center font-weight-bolder text-light lead">Enter your personal details and start your journey with us!</p>
+							<button class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">
+								Sign Up
+							</button>
 						</div>
 					</div>
 				</div>
