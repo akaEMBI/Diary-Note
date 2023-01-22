@@ -1,5 +1,9 @@
 <?php
     class Database{
+
+        const USERNAME = 'abc@gmail.com';
+        const PASSWORD = 'jhbvkjsdbvkl';
+
         private $dsn = "mysql:host=localhost;dbname=diary_note_db";
         private $dbuser = "root";
         private $dbpass = "";
