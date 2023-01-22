@@ -41,7 +41,15 @@
 											<i class="far fa-envelope fa-lg"></i>
 										</span>
 									</div>
-									<input type="email" name="email" id="email" class="form-control rounded-0" placeholder="E-Mail" required />
+									<input
+										type="email"
+										name="email"
+										id="email"
+										class="form-control rounded-0"
+										placeholder="E-Mail"
+										required
+										value="<?php if(isset($_COOKIE['email'])) {echo $_COOKIE['email'];} ?>"
+									/>
 								</div>
 								<!-- email-form-end -->
 								<!-- password-form-start -->
@@ -58,12 +66,17 @@
 										class="form-control rounded-0"
 										placeholder="Password"
 										required
+										value="<?php if(isset($_COOKIE['password'])) {echo $_COOKIE['password'];} ?>"
 									/>
 								</div>
 								<!-- password-form-end -->
 								<div class="form-group">
 									<div class="custom-control custom-checkbox float-left">
-										<input type="checkbox" name="rem" class="custom-control-input" id="customCheck" />
+										<input type="checkbox" name="rem" class="custom-control-input" id="customCheck"
+										<?php if(isset($_COOKIE['email'])) { ?>
+										checked
+										<?php } ?>
+										/>
 										<label for="customCheck" class="custom-control-label">Remember me</label>
 									</div>
 									<div class="forgot float-right">

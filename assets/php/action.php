@@ -39,8 +39,8 @@
                     setcookie("email", $email, time()+(30*24*60*60), '/');
                     setcookie("password", $pass, time()+(30*24*60*60), '/');
                 } else {
-                    setcookie("email","",1, '/');
-                    setcookie("password","",1, '/');
+                    setcookie("email","",1,'/');
+                    setcookie("password","",1,'/');
                 }
                 
                 echo 'login';
