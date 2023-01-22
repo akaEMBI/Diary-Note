@@ -191,7 +191,6 @@
 				</div>
 			</div>
 			<!-- Register Form End -->
-
 			<!-- Forgot Password Form Start -->
 			<div class="row justify-content-center wrapper" id="forgot-box" style="display: none">
 				<div class="col-lg-10 my-auto">
@@ -211,6 +210,7 @@
 								e-mail!
 							</p>
 							<form action="#" method="post" class="px-3" id="forgot-form">
+								<div id="forgotAlert"></div>
 								<!-- email-form-start -->
 								<div class="input-group input-group-lg form-group">
 									<div class="input-group-prepend">
@@ -314,6 +314,26 @@
 								} else {
 									$('#loginAlert').html(response);
 								}
+							},
+						});
+					}
+				});
+
+				//Forgot Password Ajax Request
+				$('#forgot-btn').click(function (e) {
+					if ($('#forgot-form')[0].checkValidity()) {
+						e.preventDefault();
+
+						$('#forgot-btn').val('Please Wait...');
+
+						$.ajax({
+							url: 'assets/php/action.php',
+							method: 'post',
+							data: $('#forgot-form').serialize() + '&action=forgot',
+							success: function (response) {
+								$('#forgot-btn').val('Reset Password');
+								$('#forgot-form')[0].reset();
+								$('#forgotAlert').html(response);
 							},
 						});
 					}
