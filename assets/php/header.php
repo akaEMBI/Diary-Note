@@ -44,16 +44,16 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "home.php")?"active":""; ?>" href="home.php"><i class="fas fa-home">&nbsp;</i>Home</a>
+					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "home.php")?"active":""; ?>" href="home.php"><i class="fas fa-home"></i>&nbsp;Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "profile.php")?"active":""; ?>" href="profile.php"><i class="fas fa-user-circle">&nbsp;</i>Profile</a>
+					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "profile.php")?"active":""; ?>" href="profile.php"><i class="fas fa-user-circle"></i>&nbsp;Profile</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "feedback.php")?"active":""; ?>" href="feedback.php"><i class="fas fa-comment-dots">&nbsp;</i>Feedback</a>
+					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "feedback.php")?"active":""; ?>" href="feedback.php"><i class="fas fa-comment-dots"></i>&nbsp;Feedback</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "notification.php")?"active":""; ?>" href="notification.php"><i class="fas fa-bell">&nbsp;</i>Notification</a>
+					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "notification.php")?"active":""; ?>" href="notification.php"><i class="fas fa-bell"></i>&nbsp;Notification</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
