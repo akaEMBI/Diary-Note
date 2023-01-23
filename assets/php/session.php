@@ -20,6 +20,13 @@
     $cdob = $data['dob'];
     $cphoto = $data['photo'];
     $created = $data['created_at'];
+    $verified = $data['verified'];
 
     $fname = strtok($cname,"");
+
+    if($verified == 0){
+        $verified = 'Not Verified!';
+    } else {
+        $verified = 'Verified!';
+    }
 ?>

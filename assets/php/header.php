@@ -4,11 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+        <!-- meta tag -->
 		<meta charset="UTF-8" />
 		<meta name="author" content="Surya Astawan" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title><?= ucfirst(basename($_SERVER['PHP_SELF'], '.php')); ?> | Diary Note</title>
+        <!-- bootstrap css -->
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,6 +18,7 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+        <!-- fontawesome css -->
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
@@ -23,6 +26,9 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+        <!-- data tables css -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
+        <!-- mycss -->
 		<style type="text/css">
 			@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
 			* {
