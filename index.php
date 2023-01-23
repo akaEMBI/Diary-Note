@@ -3,6 +3,13 @@
     if(isset($_SESSION['user'])){
         header('location:home.php');
     }
+
+	include_once 'assets/php/config.php';
+	$db = new Database();
+
+	$sql = "UPDATE visitors SET hits = hits+1 WHERe id = 0";
+	$stmt = $db->conn->prepare($sql);
+	$stmt->execute();
 ?>
 
 <!DOCTYPE html>
