@@ -21,36 +21,7 @@
             </h5>
             <div class="card-body">
                 <div class="table-responsive" id="showNote">
-                    <table class="table table-striped text-center">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th> 
-                                <th>Note</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Web Design</td>
-                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, similique.</td>
-                                <td>
-                                    <a href="#" title="View Details" class="text-success infoBtn">
-                                        <i class="fas fa-info-circle fa-lg"></i>&nbsp;
-                                    </a>
-                                    
-                                    <a href="#" title="Edit Note" class="text-primary editBtn">
-                                        <i class="fas fa-edit fa-lg" data-toggle="modal" data-target="#editNoteModal"></i>&nbsp;
-                                    </a>
-                                    
-                                    <a href="#" title="Delete Note" class="text-danger editBtn">
-                                        <i class="fas fa-trash-alt fa-lg"></i>&nbsp;
-                                    </a>
-                                </td> 
-                            </tr>
-                        </tbody>
-                    </table>
+
                 </div>
             </div>
         </div>
@@ -91,7 +62,7 @@
                     <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" id="add-note-form" class="px-3">
+                    <form action="#" method="post" id="edit-note-form" class="px-3">
                         <input type="hidden" name="id" id="id">
                         <div class="form-group">
                             <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="Enter Title" required>
@@ -128,9 +99,50 @@
 			referrerpolicy="no-referrer"
 		></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script>
             $(document).ready(function(){
-                $("table").DataTable();
+                //Add New Note Ajax Request
+                $("#addNoteBtn").click(function(e){
+                    if($("#add-note-form")[0].checkValidity()){
+                        e.preventDefault();
+
+                        $("#addNoteBtn").val('Please Wait...');
+
+                        $.ajax({
+                            url: 'assets/php/process.php',
+                            method: 'post',
+                            data: $("#add-note-form").serialize()+'&action=add_note',
+                            success:function(response){
+                                $("#addNoteBtn").val('Add Note');
+                                $("#add-note-form")[0].reset();
+                                $("#addNoteModal").modal('hide');
+                                Swal.fire({
+                                    title: 'Note added successfully!',
+                                    type: 'success'
+                                });
+
+                                displayAllNotes();
+                            }
+                        });
+                    }
+                });
+
+                displayAllNotes();
+                //Display All Note of an User
+                function displayAllNotes(){
+                    $.ajax({
+                        url: 'assets/php/process.php',
+                        method: 'post',
+                        data: { action: 'display_notes'},
+                        success:function(response){
+                            $("#showNote").html(response);
+                            $("table").DataTable({
+                                order: [0, 'desc']
+                            })
+                        }
+                    })
+                }
             });
         </script>
 	</body>
