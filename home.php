@@ -71,7 +71,7 @@
                             <textarea name="note" id="note" class="form-control form-control-lg" placeholder="Write Your Note Here..." rows="6" required></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="editNote" id="editNoteBtn" id="addNoteBtn" value="Update Note" class="btn btn-info btn-block btn-lg">
+                            <input type="submit" name="editNote" id="editNoteBtn" value="Update Note" class="btn btn-info btn-block btn-lg">
                         </div>
                     </form>
                 </div>
@@ -128,7 +128,103 @@
                     }
                 });
 
+                //Edit Note of An User Ajax Request
+                $("body").on("click", ".editBtn", function(e){
+                    e.preventDefault();
+
+                    edit_id = $(this).attr('id');
+                    
+                    $.ajax({
+                        url: 'assets/php/process.php',
+                        method: 'post',
+                        data: { edit_id: edit_id },
+                        success:function(response){
+                            data = JSON.parse(response);
+                            $("#id").val(data.id);
+                            $("#title").val(data.title);
+                            $("#note").val(data.note);
+                        }
+                    });
+                });
+
+                //Update Note Of An User Ajax Request
+                $("#editNoteBtn").click(function(e){
+                    if($("#edit-note-form")[0].checkValidity()){
+                        e.preventDefault();
+
+                        $.ajax({
+                            url: 'assets/php/process.php',
+                            method: 'post',
+                            data: $("#edit-note-form").serialize()+"&action=update_note",
+                            success:function(response){
+                                Swal.fire({
+                                    title: 'Note updated successfully!',
+                                    type: 'success'
+                                });
+                                $("#edit-note-form")[0].reset();
+                                $("#editNoteModal").modal('hide');
+                                displayAllNotes();
+                            }
+                        });
+                    }
+                });
+
+                //Deleted a Note of An User Ajax Request
+                $("body").on("click", ".deleteBtn", function(e){
+                    e.preventDefault();
+                    del_id = $(this).attr('id');
+                    
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result) {
+                            $.ajax({
+                                url: 'assets/php/process.php',
+                                method: 'post',
+                                data: { del_id: del_id },
+                                success:function(response){
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Note deleted successfully!',
+                                        'success'
+                                    )
+                                    displayAllNotes();
+                                }
+                            });
+                        }
+                    })   
+                });
+
+                //Display Note of An User in Details Ajax Request
+                $("body").on("click", ".infoBtn", function(e){
+                    e.preventDefault();
+
+                    info_id = $(this).attr('id');
+
+                    $.ajax({
+                        url: 'assets/php/process.php',
+                        method: 'post',
+                        data: { info_id: info_id},
+                        success:function(response){
+                            data = JSON.parse(response);
+                            Swal.fire({
+                                title: '<strong>Note : ID('+data.id+')</strong>',
+                                type: 'info',
+                                html: '<b>Title : </b>'+data.title+'<br><br><b>Note : </b>'+data.note+'<br><br><b>Written On : </b>'+data.created_at+'<br><br><b>Updated On : </b>'+data.updated_at,
+                                showCloseButton: true,
+                            });
+                        }
+                    });
+                });
+
                 displayAllNotes();
+                
                 //Display All Note of an User
                 function displayAllNotes(){
                     $.ajax({

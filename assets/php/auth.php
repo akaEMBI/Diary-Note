@@ -67,5 +67,35 @@
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        //Edit Note Of An User
+        public function edit_note($id){
+            $sql = "SELECT * FROM notes WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
+
+        //Update Note of An User
+        public function update_note($id, $title, $note){
+            $sql = "UPDATE notes SET title = :title, note = :note, updated_at = NOW() WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['title'=>$title, 'note'=>$note, 'id'=>$id]);
+            return true;
+        }
+
+        //Delete a Note Of An User
+        public function delete_note($id){
+            $sql = "DELETE FROM notes WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            
+            return true;
+        }
+
+        //
     }
 ?>
