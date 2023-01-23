@@ -20,6 +20,9 @@
     $cdob = $data['dob'];
     $cphoto = $data['photo'];
     $created = $data['created_at'];
+
+    $reg_on = date('d M Y', strtotime($created));
+
     $verified = $data['verified'];
 
     $fname = strtok($cname,"");
