@@ -55,10 +55,10 @@
 				<li class="nav-item">
 					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "profile.php")?"active":""; ?>" href="profile.php"><i class="fas fa-user-circle"></i>&nbsp;Profile</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" hidden>
 					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "feedback.php")?"active":""; ?>" href="feedback.php"><i class="fas fa-comment-dots"></i>&nbsp;Feedback</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" hidden>
 					<a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "notification.php")?"active":""; ?>" href="notification.php"><i class="fas fa-bell"></i>&nbsp;Notification</a>
 				</li>
 				<li class="nav-item dropdown">

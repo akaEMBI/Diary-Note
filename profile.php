@@ -66,7 +66,7 @@
 										<?php endif; ?>
 									</div>
 									<div class="card border-danger">
-										<form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data">
+										<form action="" method="post" class="px-3 mt-2" enctype="multipart/form-data" id="profile-update-form">
 											<input type="hidden" name="oldimage" value="<?= $cphoto; ?>">
 											<div class="form-group m-0">
 												<label for="profilePhoto" class="m-1">Upload Profile Image</label>
@@ -100,7 +100,6 @@
 											<div class="form-group mt-2">
 												<input type="submit" name="profile_update" value="Update Profile" class="btn btn-danger btn-block" id="profileUpdateBtn">
 											</div>
-
 										</form>
 									</div>
 								</div>
@@ -108,12 +107,13 @@
 							<!-- Edit Profile Tab Content end -->
 							<!-- Change Password Tab Content start -->
 							<div class="tab-pane container fade" id="changePass">
+								<div id="changepassAlert"></div>
 								<div class="card-deck">
 									<div class="card border-success">
 										<div class="card-header bg-success text-white text-center lead">
 											Change Password
 										</div>
-										<form action="#" method="post" class="px-3 mt-2">
+										<form action="#" method="post" class="px-3 mt-2" id="change-pass-form">
 											<div class="form-group">
 												<label for="curpass">Enter Your Current Password</label>
 												<input type="password" name="curpass" placeholder="Current Password" class="form-control form-control-lg" id="curpass" required minlength="5">
@@ -123,6 +123,10 @@
 													<input type="password" name="newpass" placeholder="New Password" class="form-control form-control-lg" id="newpass" required minlength="5">
 												</div>
 
+												<div class="form-group">
+													<p id="changePassError" class="text-danger"></p>
+												</div>
+												
 												<div class="form-group">
 													<label for="cnewpass">Confirm New Password</label>
 													<input type="password" name="cnewpass" placeholder="Confirm New Password" class="form-control form-control-lg" id="cnewpass" required minlength="5">
@@ -166,5 +170,52 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		></script>
-	</body>
+
+		<script>
+			$(document).ready(function(){
+
+				// Profile Update Ajax Request
+				$("#profile-update-form").submit(function(e){
+					e.preventDefault();
+
+					$.ajax({
+						url: 'assets/php/process.php',
+						method: 'post',
+						processData: false,
+						contentType: false,
+						cache: false,
+						data: new FormData(this),
+						success:function(response){
+							location.reload();
+						}
+					});
+				});
+
+				// Change Password Tab Content End
+				$("#changePassBtn").click(function(e){
+					if($("#change-pass-form")[0],checkValidity()){
+						e.preventDefault();
+						$("#changePassBtn").val('Please Wait...');
+
+						if($("#newpass").val() != $("#cnewpass").val()){
+							$("#changePassError").text('* Password did not matched!');
+							$("#changePassBtn").val('Change Password');
+						}else{
+							$.ajax({
+								url: 'assets/php/process.php',
+								method: 'post',
+								data: $("#change-pass-form").serialize()+'&action=change_pass',
+								success:function(response){
+									$("#changepassAlert").html(response);
+									$("#changePassBtn").val('Change Password');
+									$("#changePassError").text('');  
+									$("#change-pass-form")[0].reset();  
+								}
+							});
+						}
+					}
+				});
+			});
+		</script>
+	</body> 
 </html>
