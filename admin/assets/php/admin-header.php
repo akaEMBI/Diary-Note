@@ -104,7 +104,7 @@
                         class="list-group-item text-light admin-link <?= (basename($_SERVER['PHP_SELF']) == 'admin-deleteduser.php')?"nav-active":""; ?>"><i
                             class="fas fa-user-slash"></i>&nbsp;&nbsp;Deleted Users</a>
 
-                    <a href="" class="list-group-item text-light admin-link"><i
+                    <a href="assets/php/admin-action.php?export=excel" class="list-group-item text-light admin-link"><i
                             class="fas fa-table"></i>&nbsp;&nbsp;Export Users</a>
 
                     <a href="#" class="list-group-item text-light admin-link"><i
