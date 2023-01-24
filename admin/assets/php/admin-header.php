@@ -18,6 +18,8 @@
         $title = ucfirst($title[1]);
     ?>
     <title><?= $title ?> | Admin Panel</title>
+    <!-- data tables css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
     <link
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
