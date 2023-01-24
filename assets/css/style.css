@@ -9,13 +9,14 @@
 }
 body {
 	height: 100vh;
-	background-image: radial-gradient(circle farthest-corner at -3.1% -4.3%, rgba(57, 255, 186, 1) 0%, rgba(21, 38, 82, 1) 90%);
+	/* background-image: radial-gradient(circle farthest-corner at -3.1% -4.3%, rgba(57, 255, 186, 1) 0%, rgba(21, 38, 82, 1) 90%); */
+	background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 .wrapper {
 	height: 100vh;
 }
 .myColor {
-	background-image: linear-gradient(to right, #f83600 50%, #f9d423 150%);
+	background-image: linear-gradient(83.2deg, rgba(150, 93, 233, 1) 10.8%, rgba(99, 88, 238, 1) 94.3%);
 }
 .myShadow {
 	box-shadow: 0 5px 10px #111;
@@ -27,6 +28,7 @@ body {
 	background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
 	border: none !important;
 }
+
 .myBtn:hover {
 	background-image: linear-gradient(to right, #495aff 0%, #0acffe 100%);
 }
